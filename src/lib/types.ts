@@ -48,4 +48,6 @@ export interface LibraryData {
   shelves: Shelf[];
   themes: Theme[];
   books: Book[];
+  /** Names used before (borrowers and family), most recent first. */
+  people: string[];
 }

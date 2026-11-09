@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { BookActions } from "@/components/BookActions";
+import { BookHistory } from "@/components/BookHistory";
 import { Diagram } from "@/components/Diagram";
 import { useLibrary } from "@/components/LibraryProvider";
 import { useFormat } from "@/components/useFormat";
@@ -55,6 +57,8 @@ export default function BookPage() {
         </span>
       </section>
 
+      <BookActions book={book} onChanged={() => window.scrollTo({ top: 0 })} />
+
       <section aria-label={t("belongsOn")}>
         <h2 className="h2">{t("belongsOn")}</h2>
         <p className="where">
@@ -89,6 +93,8 @@ export default function BookPage() {
           </>
         )}
       </dl>
+
+      <BookHistory bookId={book.id} version={`${book.status}|${book.statusSince}|${book.homeShelfId}|${book.position}`} />
     </main>
   );
 }
