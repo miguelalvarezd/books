@@ -1,0 +1,724 @@
+# Initial library data, as shelved on 9 Nov 2026.
+# Imported once into an empty database by `npm run db:seed`. After that, the app is the source of truth.
+#
+# Format
+#   = Room name
+#   == Bookcase name                          (listed left → right)
+#   === Shelf name | kind=books|toys|notes|albums|other | height=N | front=<back-row shelf name>
+#                                              (listed top → bottom)
+#   @ Tema en español | Theme in English       (applies to the books below it)
+#   Title | Author | lang | Series #n | status=missing
+#                                              (books listed left → right; empty fields allowed)
+
+= Pasillo
+
+== Izquierda
+
+=== 4
+@ Cómics | Comics
+Astérix el galo | Goscinny & Uderzo | es | Astérix #1
+La hoz de oro | Goscinny & Uderzo | es | Astérix #2
+Astérix y los godos | Goscinny & Uderzo | es | Astérix #3
+Astérix gladiador | Goscinny & Uderzo | es | Astérix #4
+La vuelta a la Galia de Astérix | Goscinny & Uderzo | es | Astérix #5
+Astérix y Cleopatra | Goscinny & Uderzo | es | Astérix #6
+El combate de los jefes | Goscinny & Uderzo | es | Astérix #7
+Astérix y los normandos | Goscinny & Uderzo | es | Astérix
+Astérix y los Juegos Olímpicos | Goscinny & Uderzo | es | Astérix #12
+Astérix en Hispania | Goscinny & Uderzo | es | Astérix #14
+La Odisea de Astérix | Goscinny & Uderzo | es | Astérix #26
+Astérix y los pictos | Ferri & Conrad | es | Astérix #35
+La hija de Vercingétorix | Ferri & Conrad | es | Astérix #38
+Astérix chez les Bretons / Astérix et les Normands | Goscinny & Uderzo | fr | Astérix
+Cómo Obélix se cayó en la marmita… | Goscinny & Uderzo | es | Astérix
+La gran travesía | Goscinny & Uderzo | es | Astérix
+Las doce pruebas de Astérix | Goscinny & Uderzo | es | Astérix
+La isla negra | Hergé | es | Tintín
+Agencia de información | Francisco Ibáñez | es | Mortadelo y Filemón #8
+Concurso-oposición | Francisco Ibáñez | es | Mortadelo y Filemón #34
+Magos del Humor #118 — ¡…Y van 50 tacos! | Francisco Ibáñez | es | Mortadelo y Filemón
+Magos del Humor #151 — Londres 2012 | Francisco Ibáñez | es | Mortadelo y Filemón
+Super Humor Pocket #4 | Francisco Ibáñez | es | Mortadelo y Filemón
+Super Humor Pocket #5 | Francisco Ibáñez | es | Mortadelo y Filemón
+Super Humor Vol. 28 | Francisco Ibáñez | es | Mortadelo y Filemón
+Super Humor Mortadelo #33 | Francisco Ibáñez | es | Mortadelo y Filemón
+Super Humor Mortadelo y Filemón #58 | Francisco Ibáñez | es | Mortadelo y Filemón
+Desconocido #1 | | es
+Desconocido #2 | | es
+Desconocido #3 | | es
+Desconocido #4 | | es
+Desconocido #5 | | es
+Desconocido #6 | | es
+Desconocido #7 | | es
+Desconocido #8 | | es
+Desconocido #9 | | es
+Desconocido #10 | | es
+Desconocido #11 | | es
+Desconocido #12 | | es
+Desconocido #13 | | es
+Desconocido #14 | | es
+Desconocido #15 | | es
+Desconocido #16 | | es
+Desconocido #17 | | es
+Desconocido #18 | | es
+Desconocido #19 | | es
+Desconocido #20 | | es
+Nuevas Galerías del Humor #5 | Francisco Ibáñez | es | Mortadelo y Filemón
+Nuevas Galerías del Humor #6 | Francisco Ibáñez | es | Mortadelo y Filemón
+Nuevas Galerías del Humor #8 | Francisco Ibáñez | es | Mortadelo y Filemón
+Nuevas Galerías del Humor #9 | Francisco Ibáñez | es | Mortadelo y Filemón
+Top Cómic Mortadelo #32 | Francisco Ibáñez | es | Mortadelo y Filemón
+@ Series infantiles y juveniles | Children's & teen series
+La estafa del Coliseo | Geronimo Stilton | es | Geronimo Stilton #2
+El secreto de la esfinge | Geronimo Stilton | es | Geronimo Stilton #3
+@ Clásicos adaptados | Adapted classics
+La vuelta al mundo en 80 días | Julio Verne (ill. Galloni) | es
+Los viajes de Gulliver | Jonathan Swift (ill. Galloni) | es
+@ Infantil: cuentos y álbumes | Picture books & stories
+Cuentos y leyendas españolas | | es
+Cuéntame un cuento de Andersen | Concha Cardeñoso & J.M. Lavarello | es | Cuéntame un cuento #2
+Cuéntame un cuento de hadas y juguetes | Patricia Antón & Horacio Elena | es | Cuéntame un cuento #6
+Tres reyes y un deseo | Teresa Giménez & Mercè Galí | es
+Mis cuentos favoritos | Enid Blyton | es
+La isla lejana | Dianne Hofmeyr & Jude Daly | es
+Adivina cuánto te quiero | Sam McBratney & Anita Jeram | es
+Un mundo de amistad | Disney | es
+Cuentos para estar unidos (2, 5, 10 minutos) | | es
+¿Me lees un cuento, por favor? | | es | ¿Me lees un cuento, por favor? #1
+Guía del buen caballero | | es
+Mozart | | es
+Una fábula para cada día | Susaeta | es | Colección 365
+Mickey y Minnie | Disney | es | Mickey y Minnie #1
+¡Qué suerte he tenido! | Ediciones STJ | es
+Mamá, ¿de qué color son los besos? | ItsImagical | es
+¿Dónde está Miguel? | Rotraut Susanne Berner | es
+Where's Wally? The Ultimate Travel Collection | Martin Handford | en
+@ Actividades y aficiones | Activity & hobby
+Pequeños chefs | | es
+Cómo ganar a tu papá al ajedrez | Murray Chandler | es
+Asombrosos | | es
+Ven y juega en el jardín | | es
+Frozen: La guía esencial | DK | es
+El libro de chistes de los Angry Birds | | es
+Diario de la Gratitud (Di lo que sientes) | | es
+
+=== 5
+@ Diccionarios | Dictionaries
+Collins Gem — Diccionario Inglés (Español-Inglés / English-Spanish) | Collins | en
+Espasa Pocket — Español-Inglés / English-Spanish | Espasa | en
+Collins First Time — Inglés | Collins | en
+Oxford Elementary Learner's Dictionary of English | Oxford | en
+Oxford Student's Dictionary of Current English | A.S. Hornby | en
+Oxford Pocket para estudiantes de inglés, 4ª ed. | Oxford | en
+Diccionario Moderno Langenscheidt — Inglés-Español / Español-Inglés | Langenscheidt | en
+Larousse Diccionario Compact — Français-Espagnol / Español-Francés | Larousse | fr
+Le Larousse Super Major (9–12 ans) | Larousse | fr
+Le Robert Collège (11–15 ans) — Marta | Le Robert | fr
+Le Robert Collège (11–15 ans) — Nacho | Le Robert | fr
+@ Lectura en inglés | English reading
+War Horse | Michael Morpurgo | en
+Chicken Soup for the Soul: Teens Talk Middle School | | en
+Grandpa's Great Escape | David Walliams | en
+Mr Stink | David Walliams | en
+Gangsta Granny | David Walliams | en
+The Island of Adventure | Enid Blyton | en | Adventure #1
+First Term at Malory Towers | Enid Blyton | en | Malory Towers #1
+Boy and Going Solo | Roald Dahl | en
+Esio Trot | Roald Dahl | en
+Swallows and Amazons For Ever! | Arthur Ransome | en
+The Wild Way Home | Sophie Kirtley | en
+The Way to Impossible Island | Sophie Kirtley | en
+The Black Stallion | Walter Farley | en
+Shaun the Sheep Movie: The Book of the Film | | en
+Cooper's Pack: Seattle | Kyle & Groot | en
+Oliver Twist (Macmillan Readers) | Charles Dickens | en
+Animal Farm | George Orwell | en
+The Girl Who Speaks Bear | Sophie Anderson | en
+The Island at the End of Everything | Kiran Millwood Hargrave | en
+A Soul as Cold as Frost | Jennifer Kropf | en | A Soul as Cold as Frost #1
+Powder Monkey | Paul Dowswell | en
+@ Lectura en francés | French reading
+L'enfant de Noé | Éric-Emmanuel Schmitt | fr
+Le mystère Henri Pick | David Foenkinos | fr
+« Art » | Yasmina Reza | fr
+L'Avare | Molière | fr
+Pour que tu ne te perdes pas dans le quartier | Patrick Modiano | fr
+Nouvelles à chute | Gavalda, Buzzati, Cortázar et al. | fr
+Le royaume de Kensuké | Michael Morpurgo | fr
+La Gloire de mon père | Marcel Pagnol | fr
+Il a jamais tué personne, mon papa | Jean-Louis Fournier | fr
+Nouvelles contemporaines: Regards sur le monde | De Vigan, De Fombelle, Vermalle | fr
+@ Series infantiles y juveniles | Children's & teen series
+Los Hollister en el mar | Jerry West | es | Los Hollister #2
+Los Hollister van al río | Jerry West | es | Los Hollister #2
+Los Hollister en el castillo de roca | Jerry West | es | Los Hollister #3
+Los Hollister van al oeste | Jerry West | es | Los Hollister #10
+Los Hollister en la isla de las tortugas | Jerry West | es | Los Hollister #17
+Los Hollister en el campamento de nieve | Jerry West | es | Los Hollister #19
+Los Hollister y la cueva misteriosa | Jerry West | es | Los Hollister #24
+Los Hollister y el tesoro de Puerto Rico | Jerry West | es | Los Hollister #29
+Los Hollister y el misterio del caballo fantasma | Jerry West | es | Los Hollister #31
+
+=== 5B | front=5
+@ Clásicos escolares | School classics
+El Cantar de Mío Cid | adapt. Vicente Muñoz Puelles | es
+Lazarillo de Tormes | Anónimo | es
+El conde Lucanor | Don Juan Manuel | es
+@ Clásicos universales | World classics
+De la Tierra a la Luna | Julio Verne | es
+Viaje alrededor de la Luna | Julio Verne | es
+Cinco semanas en globo | Julio Verne | es
+Dos años de vacaciones | Julio Verne | es
+20.000 leguas de viaje submarino | Julio Verne | es
+La isla del tesoro / La isla de las voces | Robert L. Stevenson | es
+Robinson Crusoe | Daniel Defoe | es
+El conde de Montecristo | Alejandro Dumas | es
+El principito (1) | Antoine de Saint-Exupéry | es
+El principito (2) | Antoine de Saint-Exupéry | es
+El enfermo imaginario / El médico a palos | Molière | es
+Rebelión en la granja | George Orwell | es
+El viejo y el mar | Ernest Hemingway | es
+Capitanes intrépidos | Rudyard Kipling | es
+Tiberio | Suetonio | es
+@ Juvenil: novelas sueltas | Teen standalones
+Fernando el Temerario | José Luis Velasco | es
+El faro de barlovento | José Luis Martín Vigil | es
+Los últimos faraones | Jacinto Forment | es
+Rescate en Hispania | Jacinto Forment | es
+El viaje de Parvana | Deborah Ellis | es
+El pan de la guerra | Deborah Ellis | es
+¿Quién cuenta las estrellas? | Lois Lowry | es
+El clan de Atapuerca | Álvaro Bermejo | es
+Las Brit del 38 | Montserrat del Amo | es
+La sonrisa de los peces de piedra | Rosa Huertas | es
+El curioso incidente del perro a medianoche | Mark Haddon | es
+
+=== 6
+@ Series infantiles y juveniles | Children's & teen series
+Los Cinco en el cerro del contrabandista | Enid Blyton | es | Los Cinco #25
+Los Cinco otra vez en la isla de Kirrin | Enid Blyton | es | Los Cinco #26
+Los Cinco se ven en apuros | Enid Blyton | es | Los Cinco #29
+Un fin de semana de los Cinco | Enid Blyton | es | Los Cinco #31
+Otra aventura de los Cinco | Enid Blyton | es | Los Cinco
+Santa Clara: Las mellizas cambian de colegio | Enid Blyton | es | Santa Clara #1
+Las mellizas O'Sullivan | Enid Blyton | es | Santa Clara
+Las mellizas en Santa Clara | Enid Blyton | es | Santa Clara
+Segundo curso en Santa Clara | Enid Blyton | es | Santa Clara
+Tercer curso en Santa Clara | Enid Blyton | es | Santa Clara #5
+Kitty en Santa Clara | Enid Blyton | es | Santa Clara #6
+Claudina en Santa Clara | Enid Blyton | es | Santa Clara
+Quinto grado en Santa Clara | Enid Blyton | es | Santa Clara
+Sexto curso en Santa Clara | Enid Blyton | es | Santa Clara #9
+Aventura en el castillo | Enid Blyton | es
+El chico del millón | David Walliams | es | La increíble historia de…
+Los bocadillos de rata | David Walliams | es | La increíble historia de…
+La abuela gánster | David Walliams | es | La increíble historia de…
+Mi tía terrible | David Walliams | es | La increíble historia de…
+El mago del balón | David Walliams | es | La increíble historia de…
+La dentista demonio | David Walliams | es | La increíble historia de…
+Los Futbolísimos #1 | Roberto Santiago | es | Los Futbolísimos #1
+El misterio de los siete goles en propia puerta | Roberto Santiago | es | Los Futbolísimos #2
+El misterio del portero fantasma | Roberto Santiago | es | Los Futbolísimos #3
+Los Futbolísimos #4 | Roberto Santiago | es | Los Futbolísimos #4
+Los Futbolísimos #5 | Roberto Santiago | es | Los Futbolísimos #5
+Los Futbolísimos #6 | Roberto Santiago | es | Los Futbolísimos #6
+Los Futbolísimos #7 | Roberto Santiago | es | Los Futbolísimos #7
+Los Futbolísimos #8 | Roberto Santiago | es | Los Futbolísimos #8
+Los Futbolísimos #9 | Roberto Santiago | es | Los Futbolísimos #9
+Judy Moody salva el planeta | Megan McDonald | es | Judy Moody
+Judy Moody adivina el futuro | Megan McDonald | es | Judy Moody
+Judy Moody es detective | Megan McDonald | es | Judy Moody
+Judy Moody cambia de look | Megan McDonald | es | Judy Moody
+Celia en el mundo | Elena Fortún | es | Celia y Cuchifritín #4
+Celia y sus amigos | Elena Fortún | es | Celia y Cuchifritín #5
+Cuchifritín en casa de su abuelo | Elena Fortún | es | Celia y Cuchifritín #8
+Cuchifritín y Paquito | Elena Fortún | es | Celia y Cuchifritín #9
+Un gran equipo | Luigi Garlando | es | ¡Goool! #1
+¡Empieza el campeonato! | Luigi Garlando | es | ¡Goool! #3
+En busca de la ciudad perdida | | es | BatPat Superexploradores #1
+
+=== 7
+@ Lecturas infantiles y escolares | Young readers & school reading
+Perdidos en el tiempo | | es | Tú decides la aventura #5
+Los caballeros robot | Thomas C. Brezina | es | Equipo Tigre #7
+El secreto de Marcos | | es
+La sombra de la daga | Pilar Molina Llorente | es
+Feral y las cigüeñas | Fernando Alonso | es
+El hermano secreto de Caperucita Erre | Ricardo Gómez | es
+Disparates y aventuras en el pico Huracán | Margaret Mahy | es
+El pirata Garrapata | Juan Muñoz Martín | es | El pirata Garrapata #1
+Cuentos de la abuela Amelia | Ana Alcolea | es
+Rumbo sur | Manuel L. Alonso | es
+Las venas de la montaña negra | Alfredo Gómez Cerdá | es
+Los gigantes de la luna | Gonzalo Moure | es
+La isla de Nim | Wendy Orr | es
+Un amigo en la selva | Alfredo Gómez Cerdá | es
+El laberinto de piedra | Alfredo Gómez Cerdá | es
+La máquina maravillosa | Elvira Menéndez | es
+El monstruo goloso | James Preller | es
+Insu-Pu: La isla de los niños perdidos | Mira Lobe | es
+El caso de la profesora desaparecida | | es | Cuatro amigos y medio #1
+Beethoven 2 | Robert Tine | es
+La bruja novata | Mary Norton | es
+Los incursores | Mary Norton | es
+Charlie y la fábrica de chocolate | Roald Dahl | es
+Mucki y la patata de oro | | es
+Andanzas en Calcuta | Santiago Herraiz | es
+Manu, detective, y corazón piruleta | Pilar Lozano Carbayo | es
+El príncipe perdido | Concha López Narváez & Rafael Salmerón | es
+Los batautos hacen batautadas | Consuelo Armijo | es
+La sopera y el cazo | Michael Ende | es
+Los caballos del Dalai Lama | Pablo Zapata Lerga | es
+La vaca | | es | La vaca #1
+Las vacaciones de Lukas | Erhard Dietl | es
+Quiero escribir un cuento | Mercè Arànega | es
+Un zombie haciendo prácticas | Rosa Martínez Cal | es
+El arte tiene letras | Violeta Monreal | es
+@ Actividades y aficiones | Activity & hobby
+Minecraft: Guía básica | | es
+Minecraft: Guía de construcción | | es
+El libro de los aviones de papel para niños | Ken Blackburn & Jeff Lammers | es
+Juegos super divertidos | | es
+Mis 365 mejores adivinanzas | Libsa | es
+Juegos y test de lógica para niños | Libsa | es
+
+=== 8
+@ Atlas | Atlases
+Atlas Universal | | es
+Atlas National Geographic — Europa I | National Geographic | es
+Atlas National Geographic — Europa II | National Geographic | es
+Atlas escolar Primaria | Santillana | es
+Batallas mapa a mapa | DK | es
+Atlas + Libro de fichas | | es
+Atlas de Historia de España | Fernando García de Cortázar | es
+@ Consulta infantil | Children's reference
+Los Animales y su Mundo — Mares, Ríos y Lagos | | es | Los Animales y su Mundo
+Los Animales y su Mundo — Desierto, Polos | | es | Los Animales y su Mundo
+Los Animales y su Mundo — Bosques, Montañas | | es | Los Animales y su Mundo
+Los Animales y su Mundo | | es | Los Animales y su Mundo
+Diccionario por imágenes de los animales | Fleurus | es
+Diccionario por imágenes del espacio | Fleurus | es
+1000 preguntas y respuestas | | es
+Guía de supervivencia | Nickelodeon | es
+Enciclopedia de los animales | National Geographic | es
+Pequeña historia de España | Manuel Fernández Álvarez | es
+¿Sabías que…? | Montse Sanuy & Violeta Monreal | es
+Antigua Grecia | SM | es
+Océanos | | es
+¡Depredadores! | | es
+Mi primer Larousse de los ¿Por qué? | Larousse | es
+Mi primer diccionario ilustrado de inglés | | es
+@ Fotografía y regalo | Photography & gift books
+Foto Nikon | | es
+Time Travelling to 1972: Reliving a Very Special Year | | en
+
+=== Apuntes | kind=notes
+
+== Derecha
+
+=== 1
+@ Fantasía | Fantasy
+El Imperio Final | Brandon Sanderson | es | Mistborn #1
+El Pozo de la Ascensión | Brandon Sanderson | es | Mistborn #2
+El Héroe de las Eras | Brandon Sanderson | es | Mistborn #3
+Elantris | Brandon Sanderson | es
+El Camino de los Reyes | Brandon Sanderson | es | El archivo de las tormentas #1
+Palabras Radiantes | Brandon Sanderson | es | El archivo de las tormentas #2
+El Nombre del Viento | Patrick Rothfuss | es | Crónica del Asesino de Reyes #1
+La Música del Silencio | Patrick Rothfuss | es | Crónica del Asesino de Reyes
+El Temor de un Hombre Sabio | Patrick Rothfuss | es | Crónica del Asesino de Reyes #2
+El Ladrón del Rayo | Rick Riordan | es | Percy Jackson #1
+El Mar de los Monstruos | Rick Riordan | es | Percy Jackson #2
+La Maldición del Titán | Rick Riordan | es | Percy Jackson #3
+La Batalla del Laberinto | Rick Riordan | es | Percy Jackson #4
+El Último Héroe del Olimpo | Rick Riordan | es | Percy Jackson #5
+El Héroe Perdido | Rick Riordan | es | Los Héroes del Olimpo #1
+El Hijo de Neptuno | Rick Riordan | es | Los Héroes del Olimpo #2
+La Marca de Atenea | Rick Riordan | es | Los Héroes del Olimpo #3
+La Casa de Hades | Rick Riordan | es | Los Héroes del Olimpo #4
+La Sangre del Olimpo | Rick Riordan | es | Los Héroes del Olimpo #5
+The Trials of Apollo: The Dark Prophecy | Rick Riordan | en | The Trials of Apollo #2
+La Pirámide Roja | Rick Riordan | es | Las Crónicas de los Kane #1
+El Trono de Fuego | Rick Riordan | es | Las Crónicas de los Kane #2
+La Sombra de la Serpiente | Rick Riordan | es | Las Crónicas de los Kane #3
+El Desván de Tesla | Neal Shusterman & Eric Elfman | es | Accelerati #1
+El Hobbit | J.R.R. Tolkien | es
+Momo | Michael Ende | es
+El sobrino del mago | C.S. Lewis | es | Las Crónicas de Narnia #1
+El león, la bruja y el armario | C.S. Lewis | es | Las Crónicas de Narnia #2
+El caballo y el muchacho | C.S. Lewis | es | Las Crónicas de Narnia #3
+
+=== 2
+@ Novela negra y misterio | Crime & mystery
+Asesinato en el campo de golf | Agatha Christie | es
+El asesinato de Roger Ackroyd | Agatha Christie | es
+Cartas sobre la mesa | Agatha Christie | es
+La casa torcida | Agatha Christie | es
+Los cuatro grandes | Agatha Christie | es
+Miss Marple y los 13 problemas | Agatha Christie | es
+El misterioso caso de Styles | Agatha Christie | es
+La ratonera | Agatha Christie | es
+Sangre en la piscina | Agatha Christie | es
+Tragedia en tres actos | Agatha Christie | es
+Trayectoria de bumerang | Agatha Christie | es
+Y no quedó ninguno | Agatha Christie | es
+El misterio de las cuatro cartas | Sophie Hannah | es | Poirot
+Agatha Raisin y la quiche letal | M.C. Beaton | es | Agatha Raisin
+Agatha Raisin y el veterinario cruel | M.C. Beaton | es | Agatha Raisin
+Agatha Raisin y la turista impertinente | M.C. Beaton | es | Agatha Raisin
+Agatha Raisin y el paseo mortal | M.C. Beaton | es | Agatha Raisin
+Agatha Raisin y la jardinera asesinada | M.C. Beaton | es | Agatha Raisin
+El sabueso de los Baskerville | Arthur Conan Doyle | es | Sherlock Holmes
+Las memorias de Sherlock Holmes | Arthur Conan Doyle | es | Sherlock Holmes
+La casa de la seda | Anthony Horowitz | es | Sherlock Holmes
+El signo del miedo | Margery Allingham | es
+Philip Trent y el caso Trent | E.C. Bentley | es
+Los relatos del Padre Brown | G.K. Chesterton | es
+El misterio del cuarto amarillo | Gaston Leroux | es
+El misterio de la cripta embrujada | Eduardo Mendoza | es
+Crimen en la posada «Arca de Noé» | Molly Thynne | es
+La desaparición de Stephanie Mailer | Joël Dicker | es
+La máscara de Ripley | Patricia Highsmith | es
+La princesa de hielo | Camilla Läckberg | es
+Lo que la marea esconde | María Oruña | es
+Un crimen con clase | Julia Seales | es
+Un crimen entre bastidores | Julia Seales | es
+@ Thriller | Thrillers
+La falsificación | Jeffrey Archer | es
+El código Da Vinci | Dan Brown | es
+Cromosoma 6 | Robin Cook | es
+El caso Fitzgerald | John Grisham | es
+Isla maldita | John Grisham | es
+El manuscrito | John Grisham | es
+El rey de los pleitos | John Grisham | es
+El socio | John Grisham | es
+El testamento | John Grisham | es
+Por orden del presidente | W.E.B. Griffin | es
+La canción de los misioneros | John le Carré | es
+House of Spies | Daniel Silva | en
+@ Clásicos adaptados | Adapted classics
+Don Quijote de La Mancha | Miguel de Cervantes | es | Clásicos a medida
+Oliver Twist | Charles Dickens | es | Clásicos a medida
+Tom Sawyer | Mark Twain | es | Clásicos a medida
+Veinte mil leguas de viaje submarino | Julio Verne | es | Clásicos a medida
+
+=== 2B | front=2
+
+=== Juguetes | kind=toys | height=2
+
+=== 3
+@ Diccionarios | Dictionaries
+Diccionario de la Lengua Española, vol. a/g | RAE | es
+Diccionario de la Lengua Española, vol. h/z | RAE | es
+VOX Diccionario Primaria — Lengua española | VOX | es
+VOX Diccionario Secundaria y Bachillerato — Lengua española | VOX | es
+@ Biblias | Bibles
+Sagrada Biblia — Nácar-Colunga | BAC | es
+Sagrada Biblia — Conferencia Episcopal Española | BAC | es
+Biblia del Peregrino | Luis Alonso Schökel | es
+La Biblia | Ernesto Juliá | es
+La Biblia didáctica (1) | SM/PPC | es
+La Biblia didáctica (2) | SM/PPC | es
+@ Biblias infantiles | Children's Bibles
+La Biblia de mi Primera Comunión | | es
+La primera Biblia del niño | Kenneth N. Taylor | es
+Mi libro de historias bíblicas | | es
+@ Catequesis y teología | Catechism & theology
+Catecismo «Jesús es el Señor» | Conferencia Episcopal Española | es
+YOUCAT | | es
+Resumen de la fe de la Iglesia, luz y vida | Pedro de la Herrán & Aurelio Fernández | es
+Teología: Cristianismo y hecho religioso | Ángel Cordovilla (ed.) | es
+Cristología para empezar | José Ramón Busto Saiz | es
+@ Espiritualidad | Spirituality
+El regreso del hijo pródigo | Henri J.M. Nouwen | es
+Libro de la vida | Santa Teresa de Jesús | es
+Castillo interior | Santa Teresa de Jesús | es
+Teresa de Jesús: Volando descalza | | es
+La vida compartida | Mari Patxi Ayerra | es
+¿Me amas? Una mirada sobre la castidad matrimonial | P. Carlos Padilla | es
+@ Oración | Prayer & devotional
+Cuaderno de Oraciones | CEU Ediciones | es
+La Buena Noticia de cada día 2019 | CEU / ACdP | es
+
+=== Apuntes | kind=notes
+
+= Habitación 2
+
+== Estantería
+
+=== 1
+@ Fe y apologética | Faith & apologetics
+El regreso de Emaús | Jesús Higueras | es
+@ Narrativa española contemporánea | Spanish contemporary fiction
+Hijos de la fábula | Fernando Aramburu | es
+@ No ficción | Non-fiction
+Técnica y planificación de los servicios de comidas (1968) | Rafael Álvarez | es
+@ Fe y apologética | Faith & apologetics
+Dios – La ciencia – Las pruebas | Michel-Yves Bolloré & Olivier Bonnassies | es
+@ Biblias | Bibles
+The New American Bible | | en
+@ Fe y apologética | Faith & apologetics
+Cartas del diablo a su sobrino | C.S. Lewis | es
+@ Biblias | Bibles
+La Biblia — Palabra de Vida | Verbo Divino | es
+@ Fe y apologética | Faith & apologetics
+Las evidencias de que Jesús es Dios | José Carlos González Hurtado | es
+
+= Pasillo Sótano
+
+== Estantería
+
+=== 1
+@ Narrativa española contemporánea | Spanish contemporary fiction
+Cuentos breves para leer en el metro | Leopoldo Alas | es
+Los peces de la amargura | Fernando Aramburu | es
+El peso de las sombras | Ángeles Caso | es
+Y punto. | Mercedes Castro | es
+El tiempo entre costuras | María Dueñas | es
+No mires atrás | María Jesús Duque Romero | es
+La letra futura | Lucía Etxebarría | es
+La pasión turca | Antonio Gala | es
+Poemas de amor | Antonio Gala | es
+Las mujeres que hay en mí | Maria de la Pau Janer | es
+Historia del rey transparente | Rosa Montero | es
+En ausencia de Blanca | Antonio Muñoz Molina | es
+No culpes al karma de lo que te pasa por gilipollas | Laura Norton | es
+Cabo Trafalgar | Arturo Pérez-Reverte | es
+El maestro de esgrima | Arturo Pérez-Reverte | es
+La reina del sur | Arturo Pérez-Reverte | es
+Sidi | Arturo Pérez-Reverte | es
+Peña Laja | Manuel Pimentel | es
+
+=== 2
+@ Narrativa española contemporánea | Spanish contemporary fiction
+El séptimo velo | Juan Manuel de Prada | es
+Cortados, solos y con (mala) leche | Carmen Rico-Godoy | es
+Tres mujeres | Carmen Rico-Godoy | es
+La sombra del viento | Carlos Ruiz Zafón | es | El cementerio de los libros olvidados #1
+Reflejos de luna | Mercedes Salisachs | es
+El volumen de la ausencia | Mercedes Salisachs | es
+El engaño de Beth Loring | Fernando Schwartz | es
+Tierra, trágame, y escúpeme en el Caribe | Ivanka Taylor | es
+Tinta | Fernando Trías de Bes | es
+El temblor diario | Alfonso Ussía | es
+Los ojos del tuareg | Alberto Vázquez-Figueroa | es
+Los mares del Sur | Manuel Vázquez Montalbán | es | Pepe Carvalho
+La madre imperfecta | Yolanda G. Villaluenga | es
+@ Narrativa latinoamericana | Latin American fiction
+La casa de los espíritus (1) | Isabel Allende | es
+La casa de los espíritus (2) | Isabel Allende | es
+La Ciudad de las Bestias | Isabel Allende | es
+El amante japonés | Isabel Allende | es
+Hija de la fortuna | Isabel Allende | es
+El plan infinito | Isabel Allende | es
+Retrato en sepia | Isabel Allende | es
+El alquimista | Paulo Coelho | es
+Como agua para chocolate | Laura Esquivel | es
+Tan veloz como el deseo | Laura Esquivel | es
+El amor en los tiempos del cólera | Gabriel García Márquez | es
+Crónica de una muerte anunciada (1) | Gabriel García Márquez | es
+Crónica de una muerte anunciada (2) | Gabriel García Márquez | es
+Memoria de mis putas tristes | Gabriel García Márquez | es
+La nada cotidiana | Zoé Valdés | es
+El sueño del celta | Mario Vargas Llosa | es
+
+=== 3
+@ Novela histórica española | Spanish historical fiction
+La pasión última de Carlos V | María Teresa Álvarez | es
+La princesa de Éboli | Almudena de Arteaga | es
+Hijos de un rey godo | María Gudín | es
+Esperando al rey | José María Pérez «Peridis» | es
+Treinta doblones de oro | Jesús Sánchez Adalid | es
+En compañía del sol | Jesús Sánchez Adalid | es
+Y de repente, Teresa | Jesús Sánchez Adalid | es
+Imperator | Isabel San Sebastián | es
+Las campanas de Santiago | Isabel San Sebastián | es
+Ysabel la Católica: confesión de una reina | Aroni Yanko | es
+El mercader de libros | Luis Zueco | es
+@ Novela histórica traducida | Translated historical fiction
+Melodía en la Toscana | Belinda Alexandra | es
+El faro de Alejandría | Gillian Bradshaw | es
+El heredero de Cleopatra | Gillian Bradshaw | es
+Púrpura imperial | Gillian Bradshaw | es
+
+=== 4
+@ Novela histórica traducida | Translated historical fiction
+La bodega | Noah Gordon | es
+El primer amor de Casanova | Arthur Japin | es
+En el país de la nube blanca | Sarah Lark | es
+Los idus de marzo | Valerio Massimo Manfredi | es
+Roma después del incendio | Allan Massie | es
+Las mujeres de César | Colleen McCullough | es | Masters of Rome #4
+La rosa de Escocia | Janet Paisley | es
+El Mesías: el niño judío | Anne Rice | es
+@ Narrativa popular traducida | Translated popular fiction
+Ilusiones | Richard Bach | es
+Ladrón de almas | Ann Benson | es
+Dios vuelve en una Harley | Joan Brady | es | Dios en una Harley #1
+Dios en una Harley: El regreso | Joan Brady | es | Dios en una Harley #2
+La joven de la perla | Tracy Chevalier | es
+Tomates verdes fritos | Fannie Flagg | es
+Una fortuna peligrosa | Ken Follett | es
+Un lugar llamado libertad | Ken Follett | es
+Vuelo final | Ken Follett | es
+
+=== 5
+@ Narrativa popular traducida | Translated popular fiction
+La princesa prometida | William Goldman | es
+El puente a Belle Island | Julie Klassen | es | | status=missing
+El diablo corre por el cielo | Raymond Levene | es
+La librera de París | Kerri Maher | es
+El velo pintado | W. Somerset Maugham | es
+Luna nueva | Stephenie Meyer | es | Crepúsculo #2
+Eclipse | Stephenie Meyer | es | Crepúsculo #3
+A tres metros sobre el cielo | Federico Moccia | es | A tres metros sobre el cielo #1
+El cumpleaños secreto | Kate Morton | es
+La casa de Riverton | Kate Morton | es
+La hija del relojero | Kate Morton | es
+Las horas distantes | Kate Morton | es
+El jardín olvidado | Kate Morton | es
+El último verano en Mayfair | Theresa Révay | es
+El guardián entre el centeno | J.D. Salinger | es
+Entre limones | Chris Stewart | es | Driving Over Lemons #1
+El diablo viste de Prada | Lauren Weisberger | es
+
+= Salón Sótano
+
+== Estantería
+
+=== 1
+@ Clásicos españoles | Spanish classics
+Cuentos | Leopoldo Alas «Clarín» | es
+Las inquietudes de Shanti Andía | Pío Baroja | es
+Rimas y leyendas | Gustavo Adolfo Bécquer | es
+La barraca | Vicente Blasco Ibáñez | es
+Entre naranjos | Vicente Blasco Ibáñez | es
+El retablo de las maravillas | Miguel de Cervantes | es
+El sí de las niñas | Leandro Fernández de Moratín | es
+Bodas de sangre | Federico García Lorca | es
+Campos de Castilla | Antonio Machado | es
+Insolación | Emilia Pardo Bazán | es
+Trafalgar | Benito Pérez Galdós | es | Episodios Nacionales #1
+La corte de Carlos IV | Benito Pérez Galdós | es | Episodios Nacionales #2
+Bailén | Benito Pérez Galdós | es | Episodios Nacionales #4
+Napoleón en Chamartín | Benito Pérez Galdós | es | Episodios Nacionales #5
+Zaragoza | Benito Pérez Galdós | es | Episodios Nacionales #6
+Gerona | Benito Pérez Galdós | es | Episodios Nacionales #7
+Cádiz | Benito Pérez Galdós | es | Episodios Nacionales #8
+Juan Martín, el Empecinado | Benito Pérez Galdós | es | Episodios Nacionales #9
+La batalla de los Arapiles | Benito Pérez Galdós | es | Episodios Nacionales #10
+La de Bringas | Benito Pérez Galdós | es
+Marianela | Benito Pérez Galdós | es
+San Manuel Bueno, mártir | Miguel de Unamuno | es
+La tía Tula | Miguel de Unamuno | es
+@ Clásicos universales | World classics
+Mansfield Park | Jane Austen | en
+Fahrenheit 451 | Ray Bradbury | en
+Cuentos de la Alhambra | Washington Irving | es
+Veinte poemas de amor y una canción desesperada / Los versos del capitán | Pablo Neruda | es
+Chitra / Pájaros perdidos | Rabindranath Tagore | es
+Ofrenda lírica | Rabindranath Tagore | es
+The Two Towers | J.R.R. Tolkien | en | The Lord of the Rings #2
+Revolutionary Road | Richard Yates | en
+@ Literatura española del siglo XX | Spanish 20th-century literature
+Historia de una escalera | Antonio Buero Vallejo | es
+La dama del alba | Alejandro Casona | es
+Judíos, moros y cristianos | Camilo José Cela | es
+Madera de boj | Camilo José Cela | es
+El camino | Miguel Delibes | es
+Cinco horas con Mario | Miguel Delibes | es
+Los niños | Miguel Delibes | es
+Pegar la hebra | Miguel Delibes | es
+El príncipe destronado | Miguel Delibes | es
+Los santos inocentes | Miguel Delibes | es
+Señora de rojo sobre fondo gris | Miguel Delibes | es
+La sombra del ciprés es alargada | Miguel Delibes | es
+Vivir al día | Miguel Delibes | es
+Capa y espada | Fernando Fernán Gómez | es
+Las bicicletas son para el verano | Fernando Fernán Gómez | es
+El bosque animado | Wenceslao Fernández Flórez | es
+
+=== 2
+@ Literatura española del siglo XX | Spanish 20th-century literature
+La brújula loca | Torcuato Luca de Tena | es
+Edad prohibida | Torcuato Luca de Tena | es
+Los renglones torcidos de Dios | Torcuato Luca de Tena | es
+La oscura historia de la prima Montse | Juan Marsé | es
+Cuadernos de todo | Carmen Martín Gaite | es
+Entre visillos | Carmen Martín Gaite | es
+Los parentescos | Carmen Martín Gaite | es
+Retahílas | Carmen Martín Gaite | es
+Tiempo de silencio | Luis Martín-Santos | es
+Algunos muchachos | Ana María Matute | es
+El polizón del Ulises | Ana María Matute | es
+Viaje en autobús | Josep Pla | es
+Real sitio | José Luis Sampedro | es
+Réquiem por un campesino español | Ramón J. Sender | es
+Tres novelas teresianas | Ramón J. Sender | es
+Crónica del rey pasmado | Gonzalo Torrente Ballester | es
+Luces de bohemia | Ramón María del Valle-Inclán | es
+@ Fe | Faith
+Jesús de Nazaret | Joseph Ratzinger / Benedicto XVI | es | Jesús de Nazaret #1
+Luz del mundo | Benedicto XVI | es
+La alegría de la fe | Benedicto XVI | es
+¡Levantaos! ¡Vamos! | Juan Pablo II | es
+Benedicto XVI y el último cónclave | Alfredo Urdaci | es
+Catecismo de la Iglesia Católica — Compendio | | es
+El drama de Jesús | José Julio Martínez, S.I. | es
+Tesoro de los amigos de Jesús (?) | Ediciones STJ | es
+¡El Papa ha dicho que el P. Enrique es bueniiísimo! (?) | Blancamaría Sanz & Margarita Pons | es
+@ Práctico y viajes | Practical & travel
+Constitución española | ABC | es
+Arte sutilísima, por la cual se enseña a escribir perfectamente (facsímil) | Juan de Icíar | es
+Atlas elemental moderno (facsímil) | Tomás López | es
+Flores de jardín: manual de cultivo y conservación | D.G. Hessayon | es
+Los secretos de la fotografía: guía de campo | Bryan Peterson | es
+The Croatian Adriatic | Naprijed | en
+París — La guía del Trotamundos | Routard | es
+Madrid: La Sierra del Agua | | es
+Guía de las rutas de Extremadura | | es
+
+=== 3
+@ Historia e ideas | History & ideas
+Recordando a Kate | A. Scott Berg | es
+Los comuneros: de la realidad al mito | Enrique Berzal de la Rosa | es
+A History of the World in 12 Maps | Jerry Brotton | en
+Elisabeth, emperatriz de Austria-Hungría | Ángeles Caso | es
+De los archivos literarios del KGB | Vitali Chentalinski | es
+La batalla de Inglaterra | Ronald W. Clark | es
+Crónicas de una aldea campesina | Modesto Domínguez Leal | es
+La guerra de la Independencia | Gérard Dufour | es
+Lecciones de la Historia | Will & Ariel Durant | es
+Las grandes batallas de la historia | Canal de Historia | es
+Progreso | Johan Norberg | es
+Justicia | Michael Sandel | es
+El águila y los cuervos: La caída del Imperio Romano | José Soto Chica | es
+@ Filosofía | Philosophy
+Ensayo sobre la vida privada | Manuel García Morente | es
+Apología de Sócrates · Critón · Carta VII | Platón | es
+@ Ensayo y ciencia | Memoir & science
+La tierra herida: ¿qué mundo heredarán nuestros hijos? | Miguel Delibes & Miguel Delibes de Castro | es
+La energía nuclear salvará el mundo | Alfredo García | es
+Una Odisea: un padre, un hijo, una epopeya | Daniel Mendelsohn | es
+@ Empresa y autoayuda | Business & self-help
+El emprendedor visionario | Marc Allen | es
+Lo que un líder no debe delegar | Salvador Alva | es
+The Virgin Way | Richard Branson | en
+Cuentos para pensar | Jorge Bucay | es
+Apunta a las estrellas y llegarás a la luna | Leopoldo Fernández Pujals | es
+¿Quién se ha llevado mi queso? | Spencer Johnson | es
+La estrategia del océano azul | W. Chan Kim & Renée Mauborgne | es
+Nunca te pares | Phil Knight | es
+El fin de la economía | Michael Perelman | es
+Zero to One | Peter Thiel | en
+@ Psicología, crianza y educación | Psychology, parenting & education
+¡Educacción! | Sonia Díez | es
+Hijos mejores | Francisco Kovacs | es
+Psicología de la motivación: teoría y práctica | María Teresa Sanz Aparicio et al. | es
+¡Voy a ser papá! | Paul Reiser | es
+Cómo hacer que te pasen cosas buenas | Marian Rojas Estapé | es
+Fortalece a tu hijo | Javier Urra | es
+@ Humor | Humour
+Episodio III | El Club de la Comedia | es
+
+=== 4 | kind=albums
