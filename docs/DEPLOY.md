@@ -26,4 +26,12 @@ DATABASE_URL=pglite:./.pglite npm run db:seed
 npm test
 ```
 
+To open the app locally with that database:
+
+```sh
+DATABASE_URL=pglite:./.pglite npm run dev
+```
+
+Then open http://localhost:3000 (or your computer's IP and port 3000 from your phone, on the same Wi-Fi).
+
 Vercel setup comes in a later stage.

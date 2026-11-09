@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Local-only database engine; keep it out of the bundle.
+  serverExternalPackages: ["@electric-sql/pglite"],
 };
 
 export default nextConfig;
