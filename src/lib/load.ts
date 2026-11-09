@@ -1,11 +1,12 @@
 import "server-only";
 import type { Db } from "@/db/client";
+import { knownPeople } from "./actions";
 import * as t from "@/db/schema";
 import type { LibraryData } from "./types";
 
 /** Reads the whole catalog. ~600 books ≈ 100 KB of JSON (≈ 20 KB gzipped). */
 export async function loadLibrary(db: Db): Promise<LibraryData> {
-  const [rooms, bookcases, shelves, themes, books] = await Promise.all([
+  const [rooms, bookcases, shelves, themes, books, people] = await Promise.all([
     db.select({ id: t.rooms.id, name: t.rooms.name, sort: t.rooms.sort }).from(t.rooms),
     db
       .select({ id: t.bookcases.id, roomId: t.bookcases.roomId, name: t.bookcases.name, sort: t.bookcases.sort })
@@ -40,6 +41,7 @@ export async function loadLibrary(db: Db): Promise<LibraryData> {
         statusSince: t.books.statusSince,
       })
       .from(t.books),
+    knownPeople(db),
   ]);
   return {
     rooms,
@@ -47,5 +49,6 @@ export async function loadLibrary(db: Db): Promise<LibraryData> {
     shelves,
     themes,
     books: books.map((b) => ({ ...b, statusSince: b.statusSince?.toISOString() ?? null })),
+    people,
   };
 }

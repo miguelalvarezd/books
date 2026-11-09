@@ -149,3 +149,14 @@ export function countBooksInRoom(ix: LibraryIndex, roomId: number): number {
     for (const s of ix.shelvesOf.get(bc.id) ?? []) n += ix.booksOf.get(s.id)?.length ?? 0;
   return n;
 }
+
+/** Nearest books on either side that are physically on the shelf right now (what you'd see). */
+export function presentNeighbours(ix: LibraryIndex, book: Book): { left: Book | null; right: Book | null } {
+  const row = ix.booksOf.get(book.homeShelfId) ?? [];
+  const i = row.findIndex((b) => b.id === book.id);
+  let left: Book | null = null;
+  let right: Book | null = null;
+  for (let k = i - 1; k >= 0; k--) if (row[k].status === "shelf") { left = row[k]; break; }
+  for (let k = i + 1; k < row.length; k++) if (row[k].status === "shelf") { right = row[k]; break; }
+  return { left, right };
+}
