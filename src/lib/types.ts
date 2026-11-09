@@ -50,4 +50,6 @@ export interface LibraryData {
   books: Book[];
   /** Names used before (borrowers and family), most recent first. */
   people: string[];
+  /** Optional features switched on by environment variables. */
+  features: { photo: boolean };
 }

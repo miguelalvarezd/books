@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { BookRow } from "@/components/BookRow";
 import { Diagram } from "@/components/Diagram";
@@ -43,6 +44,11 @@ export default function SearchPage() {
                 ? t("oneResult")
                 : t("results", { n: results.length })}
           </p>
+          {results.length === 0 && (
+            <Link href={`/add?title=${encodeURIComponent(q.trim())}`} className="btn btn-block btn-link">
+              + {t("addThis", { q: q.trim() })}
+            </Link>
+          )}
           {top && (
             <section aria-label={top.title}>
               <p className="where">

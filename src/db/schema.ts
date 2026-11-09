@@ -124,10 +124,11 @@ export const books = pgTable(
     seriesNumber: real("series_number"),
     notes: text("notes"),
 
-    /** Where the book belongs, and its place in the row (left → right). */
-    homeShelfId: integer("home_shelf_id")
-      .notNull()
-      .references(() => shelves.id, { onDelete: "restrict" }),
+    /**
+     * Where the book belongs, and its place in the row (left → right).
+     * Always set for live books; may be null only for deleted books whose shelf was removed.
+     */
+    homeShelfId: integer("home_shelf_id").references(() => shelves.id, { onDelete: "restrict" }),
     position: integer("position").notNull(),
 
     /** Where the book is right now. */
@@ -148,6 +149,8 @@ export const books = pgTable(
     updatedBy: integer("updated_by").references(() => users.id, {
       onDelete: "set null",
     }),
+    /** Soft delete: the book disappears from the app but its loan history is kept. */
+    deletedAt: timestamp("deleted_at", { withTimezone: true }),
   },
   (t) => [
     index("books_home_shelf_idx").on(t.homeShelfId, t.position),

@@ -16,7 +16,10 @@ beforeEach(async () => {
   await seedDb(db, seed);
 });
 
-const book = async (title: string) => (await db.select().from(t.books).where(eq(t.books.title, title)))[0];
+const book = async (title: string) => {
+  const b = (await db.select().from(t.books).where(eq(t.books.title, title)))[0];
+  return { ...b, homeShelfId: b.homeShelfId! };
+};
 const room = async (name: string) => (await db.select().from(t.rooms).where(eq(t.rooms.name, name)))[0];
 const shelfTitles = async (shelfId: number) =>
   (

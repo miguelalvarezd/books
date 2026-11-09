@@ -7,13 +7,15 @@ import { and, asc, eq, isNull, ne, sql } from "drizzle-orm";
 import type { Db } from "@/db/client";
 import * as t from "@/db/schema";
 
-type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
+export type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
 type Status = (typeof t.BOOK_STATUSES)[number];
 
 export class ActionError extends Error {
   constructor(
     public code: "not_found" | "conflict" | "invalid",
     message: string,
+    /** Key the app translates into a friendly message (see i18n `err_*`). */
+    public reason?: string,
   ) {
     super(message);
   }
@@ -25,8 +27,8 @@ export interface Actor {
 
 async function lockBook(tx: Tx, bookId: number) {
   const [book] = await tx.select().from(t.books).where(eq(t.books.id, bookId)).for("update");
-  if (!book) throw new ActionError("not_found", "Book not found");
-  return book;
+  if (!book || book.deletedAt || book.homeShelfId == null) throw new ActionError("not_found", "Book not found");
+  return { ...book, homeShelfId: book.homeShelfId };
 }
 
 function expect(book: { status: Status }, allowed: Status[], expected?: Status) {
@@ -37,7 +39,7 @@ function expect(book: { status: Status }, allowed: Status[], expected?: Status) 
 }
 
 /** "Pasillo · Derecha · 1", for readable audit entries. */
-async function shelfPath(tx: Tx, shelfId: number) {
+export async function shelfPath(tx: Tx, shelfId: number) {
   const [row] = await tx
     .select({ room: t.rooms.name, bookcase: t.bookcases.name, shelf: t.shelves.name })
     .from(t.shelves)
@@ -58,15 +60,15 @@ const cleanName = (s: string | undefined) => (s ?? "").replace(/\s+/g, " ").trim
  * Put `bookId` on `shelfId` right after `afterBookId` (null = first, undefined = last).
  * Renumbers the shelf 10, 20, 30… so positions stay simple.
  */
-async function placeOnShelf(tx: Tx, bookId: number, shelfId: number, afterBookId?: number | null) {
+export async function placeOnShelf(tx: Tx, bookId: number, shelfId: number, afterBookId?: number | null) {
   const [shelf] = await tx.select().from(t.shelves).where(eq(t.shelves.id, shelfId));
   if (!shelf) throw new ActionError("invalid", "Shelf not found");
-  if (shelf.kind !== "books") throw new ActionError("invalid", "That shelf doesn't hold books");
+  if (shelf.kind !== "books") throw new ActionError("invalid", "That shelf doesn't hold books", "not_books_shelf");
 
   const row = await tx
     .select({ id: t.books.id, position: t.books.position })
     .from(t.books)
-    .where(and(eq(t.books.homeShelfId, shelfId), ne(t.books.id, bookId)))
+    .where(and(eq(t.books.homeShelfId, shelfId), ne(t.books.id, bookId), isNull(t.books.deletedAt)))
     .orderBy(asc(t.books.position), asc(t.books.id));
   let at = row.length;
   if (afterBookId === null) at = 0;

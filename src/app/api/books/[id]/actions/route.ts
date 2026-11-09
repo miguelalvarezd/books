@@ -61,7 +61,7 @@ export async function POST(req: Request, ctx: RouteContext<"/api/books/[id]/acti
   } catch (err) {
     if (err instanceof ActionError) {
       const code = { not_found: 404, conflict: 409, invalid: 400 }[err.code];
-      return Response.json({ error: err.code, message: err.message }, { status: code });
+      return Response.json({ error: err.code, message: err.message, reason: err.reason }, { status: code });
     }
     throw err;
   }

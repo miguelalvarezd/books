@@ -35,6 +35,7 @@ export default function ActivityPage() {
       from: String(d.from ?? "?"),
       to: String(d.to ?? "?"),
       n: String(d.books ?? ""),
+      name: String(d.name ?? ""),
     });
   };
   const time = (iso: string) =>

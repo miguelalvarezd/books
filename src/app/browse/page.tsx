@@ -20,6 +20,9 @@ export default function BrowsePage() {
           </li>
         ))}
       </ul>
+      <Link href="/places" className="btn btn-block btn-link">
+        {t("managePlaces")}
+      </Link>
     </main>
   );
 }

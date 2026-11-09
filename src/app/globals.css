@@ -449,3 +449,122 @@ a {
   color: var(--bad);
   font-weight: 600;
 }
+
+/* Forms & editing */
+.btn-block {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin: 0.75rem 0;
+}
+.btn-link {
+  text-decoration: none;
+  color: var(--fg);
+}
+.btn-add {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--fg);
+  margin: 0;
+  border-radius: 999px;
+}
+.btn-danger {
+  border-color: var(--bad);
+  color: var(--bad);
+}
+.btn-file {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+}
+.btn-file:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+.photo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+.field textarea {
+  min-height: 3.5rem;
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  font-weight: 400;
+  border: 2px solid var(--fg);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--fg);
+  width: 100%;
+}
+.field input:disabled {
+  opacity: 0.5;
+}
+.indent {
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--line);
+}
+.two {
+  display: flex;
+  gap: 0.6rem;
+}
+.two .field {
+  flex: 1;
+  margin: 0.75rem 0;
+}
+.two .narrow {
+  flex: 0 0 5.5rem;
+}
+.two-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.tree-room {
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--fg);
+}
+.tree-case {
+  margin: 0.5rem 0 1rem 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--line);
+}
+.tree-shelves {
+  margin: 0.25rem 0;
+}
+.edit-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 56px;
+  padding: 0.25rem 0;
+}
+.tree-shelves .edit-row,
+.list .edit-row {
+  border-bottom: 1px solid var(--line);
+}
+.edit-row-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.edit-row-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.edit-row.lvl1 .edit-row-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+.edit-row .btn-small,
+.tree-room > .btn-small,
+.tree-case > .btn-small {
+  margin: 0.25rem 0;
+}
