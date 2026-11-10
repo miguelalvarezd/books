@@ -18,6 +18,9 @@ export function Header() {
         <Link href="/" className="brand">
           {t("appName")}
         </Link>
+        <Link href="/add" className="btn btn-small btn-add" aria-current={path === "/add" ? "page" : undefined}>
+          + {t("add")}
+        </Link>
         <button
           className="lang"
           onClick={() => setLocale(locale === "es" ? "en" : "es")}

@@ -1,4 +1,5 @@
 import "server-only";
+import { isNull } from "drizzle-orm";
 import type { Db } from "@/db/client";
 import { knownPeople } from "./actions";
 import * as t from "@/db/schema";
@@ -40,7 +41,8 @@ export async function loadLibrary(db: Db): Promise<LibraryData> {
         statusRoomId: t.books.statusRoomId,
         statusSince: t.books.statusSince,
       })
-      .from(t.books),
+      .from(t.books)
+      .where(isNull(t.books.deletedAt)),
     knownPeople(db),
   ]);
   return {
@@ -48,7 +50,8 @@ export async function loadLibrary(db: Db): Promise<LibraryData> {
     bookcases,
     shelves,
     themes,
-    books: books.map((b) => ({ ...b, statusSince: b.statusSince?.toISOString() ?? null })),
+    books: books.map((b) => ({ ...b, homeShelfId: b.homeShelfId!, statusSince: b.statusSince?.toISOString() ?? null })),
     people,
+    features: { photo: Boolean(process.env.ANTHROPIC_API_KEY) },
   };
 }

@@ -94,6 +94,10 @@ export default function BookPage() {
         )}
       </dl>
 
+      <Link href={`/book/${book.id}/edit`} className="btn btn-block btn-link">
+        {t("editBook")}
+      </Link>
+
       <BookHistory bookId={book.id} version={`${book.status}|${book.statusSince}|${book.homeShelfId}|${book.position}`} />
     </main>
   );

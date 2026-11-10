@@ -36,6 +36,11 @@ export default function ShelfPage() {
       </p>
       <h1 className="title">{fmt.shelfPath(shelf)}</h1>
       <p className="muted">{books.length === 0 ? t("empty") : t("booksCount", { n: books.length })}</p>
+      {shelf.kind === "books" && (
+        <Link href={`/add?shelf=${shelf.id}`} className="btn btn-block btn-link">
+          + {t("addHere")}
+        </Link>
+      )}
       {groups.map((g, i) => (
         <section key={i}>
           {g.themeId && <h2 className="h2">{fmt.themeName(g.themeId)}</h2>}

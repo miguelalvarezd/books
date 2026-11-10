@@ -34,4 +34,8 @@ DATABASE_URL=pglite:./.pglite npm run dev
 
 Then open http://localhost:3000 (or your computer's IP and port 3000 from your phone, on the same Wi-Fi).
 
+## Optional: fill in books from a photo
+
+"Rellenar con una foto" on the Add book page reads the title and author from a photo of the cover or spine using the Claude API. It only appears when the environment variable `ANTHROPIC_API_KEY` is set (create a key at console.anthropic.com; each photo costs a fraction of a cent). `ANTHROPIC_MODEL` can override the model (default `claude-haiku-5-5`). Without the key, the app works the same and the button is hidden.
+
 Vercel setup comes in a later stage.
