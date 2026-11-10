@@ -16,9 +16,9 @@
     "db:restore": "tsx --conditions=react-server scripts/restore.ts"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.2.0",
     "drizzle-orm": "^0.45.4",
     "next": "16.4.6",
+    "pg": "^8.23.1",
     "qrcode": "^1.5.4",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.16",
     "@types/node": "^22.20.5",
+    "@types/pg": "^8.23.1",
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",

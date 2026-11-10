@@ -1,3 +1,4 @@
+import "./env";
 /**
  * One-time import of seed/library.txt into an EMPTY database.
  * Refuses to run if any rooms or books already exist, so it can never overwrite real data.
@@ -7,6 +8,7 @@ import { count, eq } from "drizzle-orm";
 import type { Db } from "../src/db/client";
 import * as t from "../src/db/schema";
 import { parseSeed } from "../src/db/seed-parser";
+import { explain } from "./env";
 import { migrateDb } from "./migrate";
 
 export async function seedDb(db: Db, text: string) {
@@ -84,7 +86,7 @@ if (process.argv[1]?.endsWith("seed.ts")) {
     console.log(`Imported ${n} books.`);
     process.exit(0);
   })().catch((err) => {
-    console.error(err.message ?? err);
+    console.error(explain(err));
     process.exit(1);
   });
 }

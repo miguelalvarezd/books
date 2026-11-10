@@ -1,3 +1,4 @@
+import "./env";
 /**
  * Restores a backup file into an EMPTY database (e.g. a new Neon project).
  *   DATABASE_URL=… npm run db:restore -- backups/2026-11-10.json
@@ -5,6 +6,7 @@
  */
 import { readFileSync } from "node:fs";
 import { restoreBackup } from "../src/lib/backup";
+import { explain } from "./env";
 import { migrateDb } from "./migrate";
 
 (async () => {
@@ -15,6 +17,6 @@ import { migrateDb } from "./migrate";
   console.log("Restored:", backup.counts);
   process.exit(0);
 })().catch((err) => {
-  console.error(err.message ?? err);
+  console.error(explain(err));
   process.exit(1);
 });
