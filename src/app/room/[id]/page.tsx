@@ -1,17 +1,19 @@
 "use client";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { Diagram } from "@/components/Diagram";
 import { useLibrary } from "@/components/LibraryProvider";
 import { useFormat } from "@/components/useFormat";
 import { useI18n } from "@/lib/i18n";
 
-export default function RoomPage() {
+function Room() {
   const { id } = useParams<{ id: string }>();
   const { ix } = useLibrary();
   const { t } = useI18n();
   const fmt = useFormat();
   const room = ix.room.get(Number(id));
+  const focus = Number(useSearchParams().get("bc")) || undefined;
   if (!room)
     return (
       <main className="page">
@@ -27,7 +29,7 @@ export default function RoomPage() {
       </p>
       <h1 className="title">{room.name}</h1>
       <p className="muted">{t("tapBook")}</p>
-      <Diagram roomId={room.id} />
+      <Diagram roomId={room.id} focusBookcaseId={focus} />
       {cases.map((bc) => (
         <section key={bc.id}>
           {cases.length > 1 && <h2 className="h2">{bc.name}</h2>}
@@ -50,5 +52,13 @@ export default function RoomPage() {
         </section>
       ))}
     </main>
+  );
+}
+
+export default function RoomPage() {
+  return (
+    <Suspense>
+      <Room />
+    </Suspense>
   );
 }

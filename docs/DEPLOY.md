@@ -32,7 +32,7 @@ This creates the tables and imports the 593 books from `seed/library.txt`. It re
 | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | accounts mode, for Google sign-in | See 4b |
 | `RESEND_API_KEY`, `EMAIL_FROM` | accounts mode, for email links | See 4c |
 | `APP_URL` | recommended | The public address, e.g. `https://biblioteca.vercel.app` (used in email links and Google redirects) |
-| `ANTHROPIC_API_KEY` | optional | Turns on "Rellenar con una foto" (see 6) |
+| `ANTHROPIC_API_KEY` | optional | Turns on "Rellenar con una foto" (see 7) |
 
 You can switch `AUTH_MODE` at any time (change the variable, redeploy). Family members, history and books stay the same; everyone just signs in again.
 
@@ -86,11 +86,15 @@ The restore runs all migrations first and then loads the rows with their origina
 
 Neon also keeps a short restore window of its own (shorter on the free plan), useful for undoing a very recent mistake.
 
-## 6. Optional: fill in books from a photo
+## 6. QR codes
+
+**Explorar → Gestionar habitaciones y estantes → Imprimir códigos QR** shows one code per bookcase (it opens that bookcase's diagram) and one for the app itself. Tap *Imprimir*: on A4 they come out three per row, with a dashed outline to cut along. Open the page from the real address (not localhost) so the codes point to it. Anyone who scans a code still has to sign in.
+
+## 7. Optional: fill in books from a photo
 
 "Rellenar con una foto" reads the title and author from a photo of the cover or spine using the Claude API. It only appears when `ANTHROPIC_API_KEY` is set (create a key at console.anthropic.com; each photo costs a fraction of a cent). `ANTHROPIC_MODEL` can override the model (default `claude-haiku-5-5`).
 
-## 7. Local development
+## 8. Local development
 
 ```sh
 DATABASE_URL=pglite:./.pglite npm run db:seed   # once

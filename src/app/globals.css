@@ -618,3 +618,58 @@ a {
 .small {
   font-size: 0.9rem;
 }
+
+/* QR sheet */
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.qr-card {
+  margin: 0;
+  padding: 0.75rem;
+  border: 2px solid var(--fg);
+  border-radius: 12px;
+  background: #fff;
+  color: #000;
+  text-align: center;
+  break-inside: avoid;
+}
+.qr-img svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.qr-card figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+.qr-card figcaption span {
+  font-size: 0.8rem;
+}
+@media print {
+  .header,
+  .tabs,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+  .qr-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8mm;
+  }
+  .qr-card {
+    border: 1px dashed #999;
+  }
+}
