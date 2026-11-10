@@ -59,6 +59,24 @@ export default function AccountPage() {
       <Link href="/family" className="btn btn-block btn-link">
         {t("family")}
       </Link>
+
+      <h2 className="h2">{t("exportTitle")}</h2>
+      <p className="muted">{t("exportIntro")}</p>
+      <a className="btn btn-block btn-link" href="/api/export/books" download>
+        {t("exportBooks")}
+      </a>
+      <a className="btn btn-block btn-link" href="/api/export/loans" download>
+        {t("exportLoans")}
+      </a>
+      {me.user.role === "admin" && (
+        <>
+          <a className="btn btn-block btn-link" href="/api/export/backup" download>
+            {t("exportBackup")}
+          </a>
+          <p className="muted small">{t("exportBackupHint")}</p>
+        </>
+      )}
+
       <button className="btn btn-danger btn-block" onClick={() => void signOut()}>
         {t("signOut")}
       </button>

@@ -1,0 +1,55 @@
+# Weekly backup of the whole library to the `backups` branch of this (private) repo.
+# Needs one repository secret: DATABASE_URL (Settings → Secrets and variables → Actions).
+# Run it by hand any time from the Actions tab ("Run workflow").
+name: Weekly backup
+
+on:
+  schedule:
+    - cron: "17 3 * * 0" # Sundays 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: backup
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Export the database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          test -n "$DATABASE_URL" || { echo "::error::Add the DATABASE_URL secret"; exit 1; }
+          npm run -s db:backup -- /tmp/backup.json
+
+      - name: Commit to the backups branch
+        run: |
+          day=$(date -u +%F)
+          if git ls-remote --exit-code --heads origin backups >/dev/null; then
+            git fetch --depth=1 origin backups
+            git worktree add bk FETCH_HEAD
+            cd bk && git switch -C backups
+          else
+            git worktree add --detach bk
+            cd bk && git switch --orphan backups
+            printf '# Library backups\n\nOne file per week, written by .github/workflows/backup.yml on main.\nRestore with `npm run db:restore -- backups/<date>.json` (see docs/DEPLOY.md).\n' > README.md
+          fi
+          mkdir -p backups
+          cp /tmp/backup.json "backups/$day.json"
+          cp /tmp/backup.json backups/latest.json
+          git add -A
+          git -c user.name="biblioteca-backup" -c user.email="actions@users.noreply.github.com" \
+            commit -q -m "Backup $day" || { echo "Nothing changed"; exit 0; }
+          git push origin backups
