@@ -2,16 +2,18 @@
  * Loads .env.local and .env (if present) for the command-line scripts, the same files
  * Next.js reads. Variables already set in the shell win.
  */
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
-for (const file of [".env.local", ".env"])
-  if (existsSync(file)) {
-    try {
-      process.loadEnvFile(file);
-    } catch {
-      /* unreadable file: ignore */
-    }
+/** Minimal KEY=value parser (also used on Node versions without process.loadEnvFile). */
+function loadEnv(file: string) {
+  for (const line of readFileSync(file, "utf8").split(/\r?\n/)) {
+    const m = line.match(/^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/);
+    if (!m || m[1] in process.env) continue;
+    process.env[m[1]] = m[2].replace(/^(['"])(.*)\1$/, "$2");
   }
+}
+
+for (const file of [".env.local", ".env"]) if (existsSync(file)) loadEnv(file);
 
 const url = process.env.DATABASE_URL?.trim();
 if (url) {

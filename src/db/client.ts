@@ -16,7 +16,7 @@ export type Db = ReturnType<typeof drizzlePg<typeof schema>>;
 let cached: Db | undefined;
 
 export async function createDb(url = process.env.DATABASE_URL): Promise<Db> {
-  if (!url) throw new Error("DATABASE_URL is not set");
+  if (!url) throw new Error("DATABASE_URL is not set (put it in .env.local in the repo folder, or Vercel → Environment Variables)");
   if (url.startsWith("pglite:")) {
     const { PGlite } = await import("@electric-sql/pglite");
     const { drizzle } = await import("drizzle-orm/pglite");
