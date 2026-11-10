@@ -1,6 +1,7 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { buildIndex, type LibraryIndex } from "@/lib/library";
+import { useAuth } from "./AuthProvider";
 import { useI18n } from "@/lib/i18n";
 import type { LibraryData } from "@/lib/types";
 
@@ -14,6 +15,7 @@ const Ctx = createContext<LibraryState | null>(null);
 /** Loads the whole catalog once; every page reads from memory, so lookups are instant. */
 export function LibraryProvider({ children }: { children: React.ReactNode }) {
   const { t } = useI18n();
+  const { refresh: refreshAuth } = useAuth();
   const [data, setData] = useState<LibraryData | null>(null);
   const [failed, setFailed] = useState(false);
 
@@ -21,12 +23,13 @@ export function LibraryProvider({ children }: { children: React.ReactNode }) {
     setFailed(false);
     try {
       const res = await fetch("/api/library", { cache: "no-store" });
+      if (res.status === 401) return void (await refreshAuth());
       if (!res.ok) throw new Error(String(res.status));
       setData(await res.json());
     } catch {
       setFailed(true);
     }
-  }, []);
+  }, [refreshAuth]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- initial data load

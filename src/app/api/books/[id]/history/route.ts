@@ -1,8 +1,12 @@
 import { getDb } from "@/db/client";
 import { bookHistory } from "@/lib/actions";
+import { getActor } from "@/lib/actor";
+import { handle } from "@/lib/http";
 
-export async function GET(_req: Request, ctx: RouteContext<"/api/books/[id]/history">) {
+export async function GET(req: Request, ctx: RouteContext<"/api/books/[id]/history">) {
   const { id } = await ctx.params;
-  const rows = await bookHistory(await getDb(), Number(id));
-  return Response.json(rows, { headers: { "Cache-Control": "no-store" } });
+  return handle(async () => {
+    await getActor(req);
+    return bookHistory(await getDb(), Number(id));
+  });
 }

@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "./AuthProvider";
 import { useI18n } from "@/lib/i18n";
 
 /** Top bar (name + language) and a bottom tab bar within thumb reach. */
 export function Header() {
   const { t, locale, setLocale } = useI18n();
+  const { me } = useAuth();
   const path = usePathname();
   const tab = (href: string, label: string, match: (p: string) => boolean) => (
     <Link href={href} className="tab" aria-current={match(path) ? "page" : undefined}>
@@ -29,6 +31,11 @@ export function Header() {
         >
           {t("switchShort")}
         </button>
+        {me.user && (
+          <Link href="/account" className="avatar" aria-label={t("account")} aria-current={path === "/account" ? "page" : undefined}>
+            {me.user.name.trim().charAt(0).toUpperCase()}
+          </Link>
+        )}
       </header>
       <nav className="tabs" aria-label={t("appName")}>
         {tab("/", t("search"), (p) => p === "/" || p.startsWith("/book"))}
