@@ -1,3 +1,4 @@
+import "./env";
 /**
  * Writes a full backup of DATABASE_URL to a JSON file.
  *   npm run db:backup -- backups/2026-11-10.json
@@ -7,6 +8,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 import { createDb } from "../src/db/client";
 import { exportBackup } from "../src/lib/backup";
+import { explain } from "./env";
 
 (async () => {
   const out = process.argv[2] ?? `backups/${new Date().toISOString().slice(0, 10)}.json`;
@@ -16,6 +18,6 @@ import { exportBackup } from "../src/lib/backup";
   console.log(`Backup written to ${out}:`, backup.counts);
   process.exit(0);
 })().catch((err) => {
-  console.error(err);
+  console.error(explain(err));
   process.exit(1);
 });

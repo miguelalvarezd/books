@@ -8,14 +8,15 @@
 
 ## 2. Load the library (once)
 
-On your computer, from the repo folder:
+On your computer, from the repo folder, put the **pooled** connection string (host contains `-pooler`) in `.env.local` — it's git-ignored:
 
 ```sh
+echo 'DATABASE_URL="postgresql://…your Neon string…"' > .env.local
 npm install
-DATABASE_URL="postgresql://…your Neon string…" npm run db:seed
+npm run db:seed
 ```
 
-This creates the tables and imports the 593 books from `seed/library.txt`. It refuses to run if the database already has data, so it can't overwrite anything.
+The database scripts (`db:seed`, `db:migrate`, `db:backup`, `db:restore`) read `.env.local` and `.env` automatically. `db:seed` creates the tables and imports the 593 books from `seed/library.txt`; it refuses to run if the database already has data, so it can't overwrite anything. If something goes wrong it prints the underlying database error and a hint (wrong password, unknown host, network).
 
 ## 3. Deploy on Vercel
 
