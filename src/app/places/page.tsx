@@ -36,6 +36,9 @@ export default function PlacesPage() {
       </p>
       <h1 className="title">{t("places")}</h1>
       <p className="muted">{t("placesHint")}</p>
+      <Link href="/qr" className="btn btn-block btn-link">
+        {t("printQr")}
+      </Link>
       <button className="btn btn-block" onClick={() => setEditing({ type: "room" })}>
         + {t("addRoom")}
       </button>

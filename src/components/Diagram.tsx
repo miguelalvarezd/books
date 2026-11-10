@@ -9,6 +9,8 @@ import { computeRoomLayout, DIAGRAM, rng, type LevelBox } from "@/lib/diagram-la
 interface Props {
   roomId: number;
   highlightId?: number;
+  /** Scroll to this bookcase (used by the QR codes). */
+  focusBookcaseId?: number;
   /** Tap a book to open it (default true). */
   interactive?: boolean;
 }
@@ -16,7 +18,7 @@ interface Props {
 const PAD = 10;
 
 /** Room drawn as it really is: bookcases side by side, one rectangle per book, highlight on one. */
-export function Diagram({ roomId, highlightId, interactive = true }: Props) {
+export function Diagram({ roomId, highlightId, focusBookcaseId, interactive = true }: Props) {
   const { ix } = useLibrary();
   const { t } = useI18n();
   const fmt = useFormat();
@@ -47,6 +49,8 @@ export function Diagram({ roomId, highlightId, interactive = true }: Props) {
     if (!el || !boxW) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let x = 0;
+    const focus = !target && focusBookcaseId ? layout.bookcases.find((b) => b.id === focusBookcaseId) : undefined;
+    if (focus) x = PAD + focus.x * scale - Math.max(0, (el.clientWidth - focus.w * scale) / 2);
     if (target) {
       // Show the whole bookcase that holds the book when it fits; otherwise centre the book.
       const bc = layout.bookcases.find((b) => target.x >= b.x && target.x < b.x + b.w);
@@ -57,7 +61,7 @@ export function Diagram({ roomId, highlightId, interactive = true }: Props) {
     }
     el.scrollTo({ left: Math.max(0, x), behavior: reduce || first.current ? "auto" : "smooth" });
     first.current = false;
-  }, [target, scale, boxW, layout]);
+  }, [target, scale, boxW, layout, focusBookcaseId]);
 
   if (!room) return null;
   const highlighted = highlightId != null ? ix.book.get(highlightId) : undefined;
