@@ -223,6 +223,12 @@ const dict = {
     you: "tú",
     ev_user_create: "{name} añadido a la familia",
     ev_user_update: "Datos de {name} cambiados",
+    exportTitle: "Exportar",
+    exportIntro: "Descarga los datos para abrirlos en Excel o Google Sheets.",
+    exportBooks: "Libros (CSV)",
+    exportLoans: "Préstamos (CSV)",
+    exportBackup: "Copia de seguridad completa (JSON)",
+    exportBackupHint: "Incluye todo: libros, sitios, préstamos, historial y familia. Sirve para restaurar la biblioteca entera.",
   },
   en: {
     appName: "Library",
@@ -443,6 +449,12 @@ const dict = {
     you: "you",
     ev_user_create: "{name} added to the family",
     ev_user_update: "{name}'s details changed",
+    exportTitle: "Export",
+    exportIntro: "Download the data to open in Excel or Google Sheets.",
+    exportBooks: "Books (CSV)",
+    exportLoans: "Loans (CSV)",
+    exportBackup: "Full backup (JSON)",
+    exportBackupHint: "Everything: books, places, loans, history and family. Use it to restore the whole library.",
   },
 } as const;
 

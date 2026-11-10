@@ -11,7 +11,9 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx scripts/migrate.ts",
     "db:seed": "tsx scripts/seed.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:backup": "tsx --conditions=react-server scripts/backup.ts",
+    "db:restore": "tsx --conditions=react-server scripts/restore.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.2.0",

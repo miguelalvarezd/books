@@ -614,3 +614,7 @@ a {
 .header {
   gap: 0.4rem;
 }
+
+.small {
+  font-size: 0.9rem;
+}
