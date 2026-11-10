@@ -23,6 +23,7 @@ export class ActionError extends Error {
 
 export interface Actor {
   userId: number | null;
+  role?: "admin" | "member";
 }
 
 async function lockBook(tx: Tx, bookId: number) {

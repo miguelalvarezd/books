@@ -1,6 +1,7 @@
 "use client";
 import { useId, useState } from "react";
 import { Diagram } from "./Diagram";
+import { useAuth } from "./AuthProvider";
 import { useLibrary } from "./LibraryProvider";
 import { Modal } from "./Modal";
 import { PlacePicker, usePlaceText, type Place } from "./PlacePicker";
@@ -157,7 +158,9 @@ function TakeDialog({ book, kind, onClose, onDone }: { book: Book; kind: "read" 
   const { ix } = useLibrary();
   const { t } = useI18n();
   const { submit, busy, error } = useSubmit(book, onDone);
-  const [person, setPerson] = useState("");
+  const { me } = useAuth();
+  // Reading: most often it's you. Lending: type who.
+  const [person, setPerson] = useState(kind === "read" ? (me.user?.name ?? "") : "");
   const [roomId, setRoomId] = useState("");
   const [tried, setTried] = useState(false);
   const listId = useId();

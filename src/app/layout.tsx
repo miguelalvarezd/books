@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { AuthProvider } from "@/components/AuthProvider";
 import { Header } from "@/components/Header";
 import { LibraryProvider } from "@/components/LibraryProvider";
 import { I18nProvider } from "@/lib/i18n";
@@ -25,8 +26,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="es">
       <body>
         <I18nProvider>
-          <Header />
-          <LibraryProvider>{children}</LibraryProvider>
+          <AuthProvider>
+            <Header />
+            <LibraryProvider>{children}</LibraryProvider>
+          </AuthProvider>
         </I18nProvider>
       </body>
     </html>

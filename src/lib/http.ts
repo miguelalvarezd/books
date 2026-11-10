@@ -1,5 +1,6 @@
 import "server-only";
 import { ActionError } from "./actions";
+import { AuthError } from "./auth";
 
 /** Run a handler; turn ActionErrors into 400/404/409 JSON responses. */
 export async function handle(fn: () => Promise<unknown>): Promise<Response> {
@@ -7,6 +8,7 @@ export async function handle(fn: () => Promise<unknown>): Promise<Response> {
     const result = await fn();
     return Response.json(result ?? { ok: true });
   } catch (err) {
+    if (err instanceof AuthError) return Response.json({ error: "auth" }, { status: err.status });
     if (err instanceof ActionError) {
       const status = { not_found: 404, conflict: 409, invalid: 400 }[err.code];
       return Response.json({ error: err.code, message: err.message, reason: err.reason }, { status });

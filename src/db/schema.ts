@@ -213,3 +213,47 @@ export const events = pgTable(
     index("events_entity_idx").on(t.entityType, t.entityId),
   ],
 );
+
+// ───────────────────────────── Sign-in ─────────────────────────────
+
+/** A signed-in phone. The cookie holds a random token; only its SHA-256 is stored. */
+export const sessions = pgTable(
+  "sessions",
+  {
+    id: id(),
+    tokenHash: text("token_hash").notNull(),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    method: text("method").notNull(), // passcode | email | google | dev
+    createdAt: createdAt(),
+    lastSeenAt: timestamp("last_seen_at", { withTimezone: true }).notNull().defaultNow(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    userAgent: text("user_agent"),
+  },
+  (t) => [uniqueIndex("sessions_token_unique").on(t.tokenHash), index("sessions_user_idx").on(t.userId)],
+);
+
+/** One-time sign-in links sent by email. */
+export const loginTokens = pgTable(
+  "login_tokens",
+  {
+    id: id(),
+    tokenHash: text("token_hash").notNull(),
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    createdAt: createdAt(),
+    expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+    usedAt: timestamp("used_at", { withTimezone: true }),
+  },
+  (t) => [uniqueIndex("login_tokens_token_unique").on(t.tokenHash)],
+);
+
+/** Failed sign-in attempts, to slow down guessing (per IP / per email). */
+export const authAttempts = pgTable("auth_attempts", {
+  key: text("key").primaryKey(),
+  failures: integer("failures").notNull().default(0),
+  windowStart: timestamp("window_start", { withTimezone: true }).notNull().defaultNow(),
+  lockedUntil: timestamp("locked_until", { withTimezone: true }),
+});

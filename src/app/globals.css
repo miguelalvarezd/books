@@ -568,3 +568,49 @@ a {
 .tree-case > .btn-small {
   margin: 0.25rem 0;
 }
+
+/* Sign-in & account */
+.login {
+  padding-top: 1.5rem;
+}
+.login-top {
+  display: flex;
+  justify-content: flex-end;
+}
+.or {
+  text-align: center;
+  color: var(--muted);
+  margin: 0.25rem 0;
+}
+.people {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 800;
+  text-decoration: none;
+  flex: none;
+}
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  font-weight: 600;
+}
+.check input {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.header {
+  gap: 0.4rem;
+}

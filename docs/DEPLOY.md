@@ -1,7 +1,5 @@
 # Setup and deploy
 
-This guide grows with each stage. Stage 1 covers the database.
-
 ## 1. Create the database (Neon)
 
 1. Sign up at [neon.com](https://neon.com) (free plan) and create a project, region **Europe (Frankfurt)**.
@@ -19,23 +17,64 @@ DATABASE_URL="postgresql://…your Neon string…" npm run db:seed
 
 This creates the tables and imports the 593 books from `seed/library.txt`. It refuses to run if the database already has data, so it can't overwrite anything.
 
-## 3. Try it locally without Neon
+## 3. Deploy on Vercel
+
+1. Vercel → **Add New → Project** → import `miguelalvarezd/books`. Framework: Next.js (detected).
+2. **Settings → Environment Variables** (Production): add the variables from the table below.
+3. Deploy. Every deploy runs `vercel-build`, which applies any new database migrations before building.
+
+| Variable | Needed | What |
+|---|---|---|
+| `DATABASE_URL` | always | The Neon connection string |
+| `AUTH_MODE` | always | `passcode` or `accounts` (see below) |
+| `FAMILY_PASSCODE` | passcode mode | The family code. Not case-sensitive |
+| `ADMIN_EMAIL` | accounts mode | Your email. It's let in the first time and becomes admin |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | accounts mode, for Google sign-in | See 4b |
+| `RESEND_API_KEY`, `EMAIL_FROM` | accounts mode, for email links | See 4c |
+| `APP_URL` | recommended | The public address, e.g. `https://biblioteca.vercel.app` (used in email links and Google redirects) |
+| `ANTHROPIC_API_KEY` | optional | Turns on "Rellenar con una foto" (see 5) |
+
+You can switch `AUTH_MODE` at any time (change the variable, redeploy). Family members, history and books stay the same; everyone just signs in again.
+
+## 4. Sign-in
+
+### 4a. Passcode mode (simplest)
+
+Set `AUTH_MODE=passcode` and `FAMILY_PASSCODE`. On a new phone: open the app, type the family code, then tap your name (or "Soy nuevo/a" the first time). The **first person to sign in becomes admin** — do it yourself right after deploying.
+
+- Wrong codes are counted per network: after 8 in 15 minutes that network waits 15 minutes.
+- Change the code by changing the variable and redeploying. Phones already signed in stay signed in; to sign everyone out, an admin can deactivate and reactivate people in **Familia**.
+
+### 4b. Accounts mode with Google
+
+1. [Google Cloud Console](https://console.cloud.google.com) → create a project → **APIs & Services → OAuth consent screen**: External, app name "Biblioteca", your email. Add the family's Gmail addresses as test users, or publish the app (only the basic `email` scope is used, which normally needs no Google review).
+2. **Credentials → Create credentials → OAuth client ID** → Web application. Authorized redirect URI: `https://<your-domain>/api/auth/google/callback`.
+3. Put the client ID and secret in `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET`, set `AUTH_MODE=accounts` and `ADMIN_EMAIL`.
+4. Sign in yourself, then invite each person in **Tu cuenta → Familia → Añadir persona** with their email.
+
+### 4c. Accounts mode with email links
+
+1. Sign up at [resend.com](https://resend.com) (free tier), verify a domain or use their test sender, and create an API key.
+2. Set `RESEND_API_KEY` and `EMAIL_FROM` (e.g. `Biblioteca <biblioteca@yourdomain.com>`).
+3. People type their email and get a 20-minute, single-use link. Only invited emails receive one; the screen says the same thing either way, so it can't be used to find out who's invited.
+
+Google and email can be on at the same time.
+
+### Security notes
+
+- Sessions last 180 days of use on each phone and are stored as hashes; signing out or being deactivated ends them.
+- All data requires a session. Changes are refused if they come from another website.
+- Nobody outside the family can see anything, even with the link.
+
+## 5. Optional: fill in books from a photo
+
+"Rellenar con una foto" reads the title and author from a photo of the cover or spine using the Claude API. It only appears when `ANTHROPIC_API_KEY` is set (create a key at console.anthropic.com; each photo costs a fraction of a cent). `ANTHROPIC_MODEL` can override the model (default `claude-haiku-5-5`).
+
+## Local development
 
 ```sh
-DATABASE_URL=pglite:./.pglite npm run db:seed
-npm test
+DATABASE_URL=pglite:./.pglite npm run db:seed   # once
+DATABASE_URL=pglite:./.pglite AUTH_MODE=off npm run dev
 ```
 
-To open the app locally with that database:
-
-```sh
-DATABASE_URL=pglite:./.pglite npm run dev
-```
-
-Then open http://localhost:3000 (or your computer's IP and port 3000 from your phone, on the same Wi-Fi).
-
-## Optional: fill in books from a photo
-
-"Rellenar con una foto" on the Add book page reads the title and author from a photo of the cover or spine using the Claude API. It only appears when the environment variable `ANTHROPIC_API_KEY` is set (create a key at console.anthropic.com; each photo costs a fraction of a cent). `ANTHROPIC_MODEL` can override the model (default `claude-haiku-5-5`). Without the key, the app works the same and the button is hidden.
-
-Vercel setup comes in a later stage.
+`AUTH_MODE=off` skips sign-in and only works with a local `pglite:` database. To try sign-in locally, use `AUTH_MODE=passcode FAMILY_PASSCODE=test` instead. Open http://localhost:3000, or your computer's IP and port 3000 from a phone on the same Wi-Fi.

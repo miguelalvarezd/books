@@ -1,7 +1,15 @@
+import { getActor } from "@/lib/actor";
+import { AuthError } from "@/lib/auth";
 import { identifyFromPhoto } from "@/lib/identify";
 
 /** Body: { image: "<base64 JPEG>" } (resized on the phone to ≤ 1280 px). */
 export async function POST(req: Request) {
+  try {
+    await getActor(req);
+  } catch (err) {
+    if (err instanceof AuthError) return Response.json({ error: "auth" }, { status: err.status });
+    throw err;
+  }
   if (!process.env.ANTHROPIC_API_KEY) return Response.json({ error: "not_configured" }, { status: 501 });
   let image = "";
   try {
